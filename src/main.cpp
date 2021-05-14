@@ -16,7 +16,6 @@ void initialize() {
 	Motor shooter (shooterPort, E_MOTOR_GEARSET_06, false, E_MOTOR_ENCODER_DEGREES);
 	Motor indexer (indexerPort, E_MOTOR_GEARSET_06, true, E_MOTOR_ENCODER_DEGREES);
 	Controller master(E_CONTROLLER_MASTER);
-	Imu imu(imuPort);
 	ADIDigitalIn intakeColor(intakeColorPort);
 	ADIDigitalIn shootColor(shootColorPort);
 	Rotation lRot(lRotPort);
