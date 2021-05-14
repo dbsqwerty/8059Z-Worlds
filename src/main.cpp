@@ -23,6 +23,7 @@ void initialize() {
 	Rotation rRot(rRotPort);
 	lRot.reset_position();
 	rRot.reset_position();
+	rRot.set_reversed(true);
 	FL.set_brake_mode(E_MOTOR_BRAKE_COAST);
 	BL.set_brake_mode(E_MOTOR_BRAKE_COAST);
 	FR.set_brake_mode(E_MOTOR_BRAKE_COAST);
