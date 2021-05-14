@@ -1,5 +1,5 @@
 #include "main.h"
-int DEBUG_MODE = 2;
+int DEBUG_MODE =5 ;
 void printPosMaster(){
   Controller master(E_CONTROLLER_MASTER);
   Imu imu (imuPort);
@@ -40,6 +40,6 @@ void Debug(void * ignore){
         case 6: printPowerTerminal(); break;
       }
     }
-    delay(50);
+    delay(700);
   }
 }

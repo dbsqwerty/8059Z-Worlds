@@ -23,12 +23,17 @@ void initialize() {
 	Rotation rRot(rRotPort);
 	lRot.reset_position();
 	rRot.reset_position();
+	FL.set_brake_mode(E_MOTOR_BRAKE_COAST);
+	BL.set_brake_mode(E_MOTOR_BRAKE_COAST);
+	FR.set_brake_mode(E_MOTOR_BRAKE_COAST);
+	BR.set_brake_mode(E_MOTOR_BRAKE_COAST);
 	/** declaration and initialization of asynchronous Tasks */
 	Task ControlTask(Control);
 	Task DebugTask(Debug);
 	Task OdometryTask(Odometry);
 	Task SensorsTask(Sensors);
 	Task MechControlTask(MechControl);
+
 }
 /**
  * Runs while the robot is in the disabled state of Field Management System or
@@ -84,8 +89,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
  void opcontrol() {
- 	/** braking */
- 	double BRAKE_POW = 0;
  	/** declare references to motors and controller */
  	Motor FL (FLPort);
  	Motor BL (BLPort);
@@ -101,23 +104,24 @@ void autonomous() {
  	bool tankDrive = true;
 	autoIndex = false;
  	while (true) {
+
  		if(master.get_digital_new_press(DIGITAL_Y)) tankDrive = !tankDrive;
 		if(master.get_digital_new_press(DIGITAL_A)) autoIndex = !autoIndex;
  		if(tankDrive){
-       int l = master.get_analog(ANALOG_LEFT_Y);
-       int r = master.get_analog(ANALOG_RIGHT_Y);
-       FL.move(l-BRAKE_POW);
-       BL.move(l+BRAKE_POW);
-       FR.move(r-BRAKE_POW);
-       BR.move(r+BRAKE_POW);
+       double l = master.get_analog(ANALOG_LEFT_Y);
+       double r = master.get_analog(ANALOG_RIGHT_Y);
+       FL.move(l);
+       BL.move(l);
+       FR.move(r);
+       BR.move(r);
      }
-		 else{
-       int x = master.get_analog(ANALOG_LEFT_X);
-       int y = master.get_analog(ANALOG_RIGHT_Y);
-       FL.move(y+x-BRAKE_POW);
-       BL.move(y+x+BRAKE_POW);
-       FR.move(y-x-BRAKE_POW);
-       BR.move(y-x+BRAKE_POW);
+	else{
+       double x = master.get_analog(ANALOG_LEFT_X);
+       double y = master.get_analog(ANALOG_RIGHT_Y);
+       FL.move(y+x);
+       BL.move(y+x);
+       FR.move(y-x);
+       BR.move(y-x);
      }
 
  		pros::delay(5);

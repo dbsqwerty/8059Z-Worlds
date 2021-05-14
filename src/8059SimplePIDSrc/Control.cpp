@@ -1,13 +1,12 @@
 #include "main.h"
-#define DEFAULT_KP 0.27
-#define DEFAULT_KD 0.2
-#define DEFAULT_TURN_KP 1.2
-
-#define DEFAULT_TURN_KD 0.6
+#define DEFAULT_KP 0.28
+#define DEFAULT_KD 0.205
+#define DEFAULT_TURN_KP 1.4 // 20 degrees = 2.5, 180 degrees = 1
+#define DEFAULT_TURN_KD 0.5
 #define RAMPING_POW 1.2
-#define DISTANCE_LEEWAY 15
+#define DISTANCE_LEEWAY 8
 #define BEARING_LEEWAY 1.5
-#define MAX_POW 100
+#define MAX_POW 120
 
 double targEncdL = 0, targEncdR = 0, targBearing = 0;
 double errorEncdL = 0, errorEncdR = 0, errorBearing = 0;

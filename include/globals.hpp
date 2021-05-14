@@ -12,8 +12,8 @@
 #define shooterPort 7
 #define indexerPort 8
 /** sensor ports */
-#define lRotPort 20
-#define rRotPort 19
+#define lRotPort 12
+#define rRotPort 11
 #define imuPort 18
 
 /** sensor ADI ports */
