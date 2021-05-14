@@ -2,7 +2,7 @@
 #include "main.h"
 #include "mechLib.hpp"
 
-int intakeColorThreshold = 2850, shootColorThreshold = 2830;
+int intakeColorThreshold = 2725, shootColorThreshold = 2725;
 double powerRollers = 0, powerIndexer = 0, powerShooter = 0;
 double rollerMax = 127, indexMax=127, shooterMax = 127;
 bool autoIndex = false;

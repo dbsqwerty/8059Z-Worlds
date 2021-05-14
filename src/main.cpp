@@ -102,7 +102,7 @@ void autonomous() {
  	master.clear();
  	/** boolean flag for whether the driver uses tank drive or not */
  	bool tankDrive = true;
-	autoIndex = false;
+	autoIndex = true;
  	while (true) {
 
  		if(master.get_digital_new_press(DIGITAL_Y)) tankDrive = !tankDrive;
