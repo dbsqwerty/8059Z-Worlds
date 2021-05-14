@@ -45,5 +45,48 @@ void autoLoad(){
   resetMech();
 }
 void MechControl(void * ignore){
+  Motor lRoller (lRollerPort);
+  Motor rRoller (rRollerPort);
+  Motor indexer (indexerPort);
+  Motor shooter (shooterPort);
+  Controller master(E_CONTROLLER_MASTER);
+  double indexerMove = 0, shooterMove = 0, rollersMove = 0;
 
+  while(true){
+    if (autoIndex){
+      if (intakeColorValue < intakeColorThreshold && shootColorValue < shootColorThreshold)indexerMove=0;
+      else indexerMove=1;
+    }
+    else{
+      indexerMove=(master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
+    }
+    //shooting code
+    if(master.get_digital(DIGITAL_R2) && master.get_digital(DIGITAL_R1)) {
+      shooterMove=0.75;
+    }else if(master.get_digital(DIGITAL_R2)){
+      shooterMove=-1;
+    }else if(master.get_digital(DIGITAL_R1)){
+      shooterMove=1;
+      indexerMove=1;
+    }else{
+      shooterMove=0.05;
+    }
+    //outake ALLLL
+    if (master.get_digital(DIGITAL_L2)){
+      shooterMove=-1;
+      indexerMove=-1;
+      rollersMove=-1;
+    }
+    //rollllersssss
+    rollersMove=(master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
+
+    powerIndexer = (indexerMove*indexMax);
+    powerRollers = (rollersMove*rollerMax);
+    powerShooter = (shooterMove*shooterMax);
+    lRoller.move(powerRollers);
+    rRoller.move(powerRollers);
+    indexer.move(powerIndexer);
+    shooter.move(powerShooter);
+    delay(5);
+  }
 }

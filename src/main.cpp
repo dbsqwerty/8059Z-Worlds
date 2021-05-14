@@ -119,30 +119,7 @@ void autonomous() {
        FR.move(y-x-BRAKE_POW);
        BR.move(y-x+BRAKE_POW);
      }
-		 //TEMP MANUAL Code
-		 lRoller.move((master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2))*127);
-		 rRoller.move((master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2))*127);
-		 if(master.get_digital(DIGITAL_R2) && master.get_digital(DIGITAL_R1)) {
-		   shooter.move(127*0.75);
-		 }else if(master.get_digital(DIGITAL_R2)){
-		   shooter.move(-127);
-		 }else if(master.get_digital(DIGITAL_R1)){
-		   shooter.move(127);
-		 }else{
-		   shooter.move(5);
-		 }
-		 if(master.get_digital(DIGITAL_L2))
-		 {
-		   shooter.move(-127);
-		   lRoller.move(-127);
-		   rRoller.move(-127);
-		   indexer.move(-127);
-		 }
-		 if(master.get_digital(DIGITAL_R1)){
-		   indexer.move(127);
-		 }else{
-		   indexer.move((master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2))*105);
-		 }
+	
  		pros::delay(5);
  	}
  }
