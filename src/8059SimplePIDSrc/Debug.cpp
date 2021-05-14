@@ -3,6 +3,8 @@ int DEBUG_MODE = 8;
 void printPosMaster(){
   Controller master(E_CONTROLLER_MASTER);
   master.print(1, 0, "%.2f %.2f %.2f", X, Y, bearing*toDeg);
+  delay(50);
+  master.print(2, 0, " %.0f ",battery::get_capacity());
 }
 void printPosTerminal(){
   printf("x: %.2f y: %.2f bearing: %.2f\n", X, Y, bearing*toDeg);
