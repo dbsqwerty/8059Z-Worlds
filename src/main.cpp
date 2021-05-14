@@ -7,14 +7,14 @@
  */
 void initialize() {
 	/** declaration and initialization of motors, encoders and controller */
-	Motor FL (FLPort, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
-	Motor BL (BLPort, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
-	Motor FR (FRPort, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
-	Motor BR (BRPort, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
+	Motor FL (FLPort, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
+	Motor BL (BLPort, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
+	Motor FR (FRPort, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
+	Motor BR (BRPort, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
 	Motor lRoller (lRollerPort, E_MOTOR_GEARSET_06, false, E_MOTOR_ENCODER_DEGREES);
 	Motor rRoller (rRollerPort, E_MOTOR_GEARSET_06, true, E_MOTOR_ENCODER_DEGREES);
 	Motor shooter (shooterPort, E_MOTOR_GEARSET_06, false, E_MOTOR_ENCODER_DEGREES);
-	Motor indexer (indexerPort, E_MOTOR_GEARSET_06, false, E_MOTOR_ENCODER_DEGREES);
+	Motor indexer (indexerPort, E_MOTOR_GEARSET_06, true, E_MOTOR_ENCODER_DEGREES);
 	Controller master(E_CONTROLLER_MASTER);
 	Imu imu(imuPort);
 	ADIDigitalIn intakeColor(intakeColorPort);
@@ -23,7 +23,6 @@ void initialize() {
 	Rotation rRot(rRotPort);
 	lRot.reset_position();
 	rRot.reset_position();
-
 	/** declaration and initialization of asynchronous Tasks */
 	Task ControlTask(Control);
 	Task DebugTask(Debug);
@@ -100,12 +99,10 @@ void autonomous() {
  	master.clear();
  	/** boolean flag for whether the driver uses tank drive or not */
  	bool tankDrive = true;
- 	// setMechMode(MECH_MODE::E_MANUAL);
+	autoIndex = false;
  	while (true) {
- 		/** toggle tank drive */
- 		// printf("intakecolor: %d, shootColor: %d\n", intakeColor.get_value(), shootColor.get_value());
  		if(master.get_digital_new_press(DIGITAL_Y)) tankDrive = !tankDrive;
- 		/** handle tankDrive */
+		if(master.get_digital_new_press(DIGITAL_A)) autoIndex = !autoIndex;
  		if(tankDrive){
        int l = master.get_analog(ANALOG_LEFT_Y);
        int r = master.get_analog(ANALOG_RIGHT_Y);
@@ -122,33 +119,30 @@ void autonomous() {
        FR.move(y-x-BRAKE_POW);
        BR.move(y-x+BRAKE_POW);
      }
-
-		//TEMP MANUAL Code
- 		lRoller.move((master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2))*127);
- 		rRoller.move((master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2))*127);
- 		if(master.get_digital(DIGITAL_R2) && master.get_digital(DIGITAL_R1)) {
- 			shooter.move(127*0.75);
- 		}else if(master.get_digital(DIGITAL_R2)){
- 			shooter.move(-127);
- 		}else if(master.get_digital(DIGITAL_R1)){
- 			shooter.move(127);
- 		}else{
- 			shooter.move(5);
- 		}
- 		if(master.get_digital(DIGITAL_L2))
- 		{
- 			shooter.move(-127);
- 			lRoller.move(-127);
- 			rRoller.move(-127);
- 			indexer.move(-127);
- 		}
- 		if(master.get_digital(DIGITAL_R1)){
- 			indexer.move(127);
- 		}else{
- 			indexer.move((master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2))*105);
- 		}
-
-
+		 //TEMP MANUAL Code
+		 lRoller.move((master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2))*127);
+		 rRoller.move((master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2))*127);
+		 if(master.get_digital(DIGITAL_R2) && master.get_digital(DIGITAL_R1)) {
+		   shooter.move(127*0.75);
+		 }else if(master.get_digital(DIGITAL_R2)){
+		   shooter.move(-127);
+		 }else if(master.get_digital(DIGITAL_R1)){
+		   shooter.move(127);
+		 }else{
+		   shooter.move(5);
+		 }
+		 if(master.get_digital(DIGITAL_L2))
+		 {
+		   shooter.move(-127);
+		   lRoller.move(-127);
+		   rRoller.move(-127);
+		   indexer.move(-127);
+		 }
+		 if(master.get_digital(DIGITAL_R1)){
+		   indexer.move(127);
+		 }else{
+		   indexer.move((master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2))*105);
+		 }
  		pros::delay(5);
  	}
  }
