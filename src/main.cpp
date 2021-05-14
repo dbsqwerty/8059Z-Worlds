@@ -63,9 +63,9 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	Imu imu (imuPort);
 	// while(imu.is_calibrating()) delay(5);
 	/** numerical choice of which autonomous set to run */
+	setCoords(0, 0, 0);
 	int autonNum = 0;
 	switch (autonNum){
 		case 0: BHR(); break;
