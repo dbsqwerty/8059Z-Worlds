@@ -28,7 +28,7 @@ void initialize() {
 	Task DebugTask(Debug);
 	Task OdometryTask(Odometry);
 	Task SensorsTask(Sensors);
-	//Task MechControlTask(MechControl);
+	Task MechControlTask(MechControl);
 }
 /**
  * Runs while the robot is in the disabled state of Field Management System or
@@ -119,7 +119,7 @@ void autonomous() {
        FR.move(y-x-BRAKE_POW);
        BR.move(y-x+BRAKE_POW);
      }
-	
+
  		pros::delay(5);
  	}
  }
