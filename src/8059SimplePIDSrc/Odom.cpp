@@ -11,7 +11,7 @@ void setCoords(double x, double y, double b){
 }
 void Odometry(void * ignore){
   double changeX = 0, changeY = 0, changeBearing = 0;
-  while(true){
+  while(competition::is_autonomous()){
     double encdChangeL = encdL-prevEncdL;
     double encdChangeR = encdR-prevEncdR;
 

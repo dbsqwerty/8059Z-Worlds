@@ -3,11 +3,10 @@
 #define DEFAULT_KD 0
 #define DEFAULT_TURN_KP 0.95
 #define DEFAULT_TURN_KD 0
-#define RAMPING_POW 2
-#define DISTANCE_LEEWAY 0
+#define RAMPING_POW 1.2
+#define DISTANCE_LEEWAY 15
 #define BEARING_LEEWAY 1.5
-
-const double MAX_POW = 120;
+#define MAX_POW = 115;
 
 double targEncdL = 0, targEncdR = 0, targBearing = 0;
 double errorEncdL = 0, errorEncdR = 0, errorBearing = 0;
