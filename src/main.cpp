@@ -67,7 +67,7 @@ void autonomous() {
 	/** numerical choice of which autonomous set to run */
 	setCoords(0, 0, 0);
 	driveMode = false;
-	int autonNum = 0;	
+	int autonNum = 4;	
 	double start = millis();	
 	switch (autonNum){
 		case 0: BHR(); break;

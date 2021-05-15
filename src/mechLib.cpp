@@ -50,7 +50,7 @@ void autoLoad(){
 }
 void switcheroo(){
   //switch to outdoor field conditions
-  if (outdoorField){
+  if (!competition::is_connected() && outdoorField){
   intakeColorThreshold = outdoorIntake;
   shootColorThreshold = outdoorShoot;
   }
@@ -71,7 +71,10 @@ void MechControl(void * ignore){
     switcheroo();
     if (autoIndex){
       if (intakeColorValue < intakeColorThreshold && shootColorValue < shootColorThreshold)indexerMove=0;
-      else indexerMove=1;
+      else {
+
+        indexerMove=master.get_digital(DIGITAL_L1);
+      }
     }
     else{
       indexerMove=(master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));

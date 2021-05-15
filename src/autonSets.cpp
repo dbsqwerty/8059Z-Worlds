@@ -2,6 +2,8 @@
 #include "main.h"
 /** programming skills run */
 void test(){
+	baseMove(50);
+	waitBase(3500);
 }
 /** Autonomous routine for blue left spawn. */
 void BHR(){
