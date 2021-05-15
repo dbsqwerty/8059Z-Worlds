@@ -2,10 +2,13 @@
 #include "main.h"
 #include "mechLib.hpp"
 
-int intakeColorThreshold = 2900, shootColorThreshold = 2900;
+float outdoorIntake = 2508, outdoorShoot = 2508;
+float indoorIntake = 2900, indoorShoot = 2900;
+
+float intakeColorThreshold = 0, shootColorThreshold = 0;
 double powerRollers = 0, powerIndexer = 0, powerShooter = 0;
 double rollerMax = 127, indexMax=127, shooterMax = 127;
-bool autoIndex = false;
+bool autoIndex = false, outdoorField=false;
 
 
 void setMech(int r, int i, int s){
@@ -45,6 +48,17 @@ void autoLoad(){
   waitShootColor();
   resetMech();
 }
+void switcheroo(){
+  //switch to outdoor field conditions
+  if (outdoorField){
+  intakeColorThreshold = outdoorIntake;
+  shootColorThreshold = outdoorShoot;
+  }
+  else{
+    intakeColorThreshold = indoorIntake;
+    shootColorThreshold = indoorShoot;
+  }
+}
 void MechControl(void * ignore){
   Motor lRoller (lRollerPort);
   Motor rRoller (rRollerPort);
@@ -54,6 +68,7 @@ void MechControl(void * ignore){
   double indexerMove = 0, shooterMove = 0, rollersMove = 0;
 
   while(true){
+    switcheroo();
     if (autoIndex){
       if (intakeColorValue < intakeColorThreshold && shootColorValue < shootColorThreshold)indexerMove=0;
       else indexerMove=1;

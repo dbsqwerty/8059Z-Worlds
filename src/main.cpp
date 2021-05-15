@@ -103,10 +103,13 @@ void autonomous() {
  	/** boolean flag for whether the driver uses tank drive or not */
  	bool tankDrive = true;
 	autoIndex = true;
+	outdoorField = false;
+
  	while (true) {
 
  		if(master.get_digital_new_press(DIGITAL_Y)) tankDrive = !tankDrive;
 		if(master.get_digital_new_press(DIGITAL_A)) autoIndex = !autoIndex;
+		if (master.get_digital_new_press(DIGITAL_B)) outdoorField = !outdoorField;
  		if(tankDrive){
        double l = master.get_analog(ANALOG_LEFT_Y);
        double r = master.get_analog(ANALOG_RIGHT_Y);

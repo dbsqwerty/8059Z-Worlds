@@ -16,6 +16,6 @@
 #define rRotPort 11
 
 /** sensor ADI ports */
-#define intakeColorPort 1
-#define shootColorPort 2
+#define intakeColorPort 2
+#define shootColorPort 1
 #endif
