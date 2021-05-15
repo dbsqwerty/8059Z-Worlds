@@ -2,9 +2,11 @@
 int DEBUG_MODE = 8;
 void printPosMaster(){
   Controller master(E_CONTROLLER_MASTER);
+  master.print(0,0,"  Meong!!");
+  std::string auto_use = autoIndex? "AUTO": "MANUAL";
   master.print(1, 0, "%.2f %.2f %.2f", X, Y, bearing*toDeg);
   delay(50);
-  master.print(2, 0, "Battery: %.0f ",battery::get_capacity());
+  master.print(2, 0, "Battery: %.0f       Index: %s",battery::get_capacity(), autoIndexUsed.c_str());
 }
 void printPosTerminal(){
   printf("x: %.2f y: %.2f bearing: %.2f\n", X, Y, bearing*toDeg);

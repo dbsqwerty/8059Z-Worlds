@@ -88,7 +88,7 @@ void Control(void * ignore){
   Motor BR (BRPort);
   int count = 0;
   prevErrorEncdL = 0, prevErrorEncdR = 0, prevErrorBearing = 0;
-  while(true){
+  while(competition::is_autonomous()){
     if(!pauseBase) {
       if(turnMode){
         errorBearing = targBearing - bearing;
