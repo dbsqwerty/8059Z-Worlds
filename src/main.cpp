@@ -108,7 +108,7 @@ void autonomous() {
  	master.clear();
  	/** boolean flag for whether the driver uses tank drive or not */
  	bool tankDrive = true;
-	autoIndex = true;
+	autoIndex = false;
 	outdoorField = false;
 
  	while (true) {

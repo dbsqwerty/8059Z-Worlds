@@ -72,8 +72,8 @@ void MechControl(void * ignore){
     if (autoIndex){
       if (intakeColorValue < intakeColorThreshold && shootColorValue < shootColorThreshold)indexerMove=0;
       else {
-
-        indexerMove=master.get_digital(DIGITAL_L1);
+        if (competition::is_autonomous())indexerMove=1;
+        else indexerMove=master.get_digital(DIGITAL_L1);
       }
     }
     else{
