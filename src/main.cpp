@@ -66,7 +66,9 @@ void autonomous() {
 	// while(imu.is_calibrating()) delay(5);
 	/** numerical choice of which autonomous set to run */
 	setCoords(0, 0, 0);
-	int autonNum = 0;
+	driveMode = false;
+	int autonNum = 0;	
+	double start = millis();	
 	switch (autonNum){
 		case 0: BHR(); break;
 		case 1: BMR(); break;
@@ -74,6 +76,10 @@ void autonomous() {
 		case 3: RMR(); break;
 		case 4: test(); break;
 	}
+	printf("Time used: %.2f seconds\n", (millis() - start)/1000);
+	Controller master(E_CONTROLLER_MASTER);
+	double final = (millis() - start)/1000;
+	while(true) master.print(0, 0, "Time: %.2f\n ", final);
 }
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -106,7 +112,7 @@ void autonomous() {
 	outdoorField = false;
 
  	while (true) {
-
+ 		driveMode = true;
  		if(master.get_digital_new_press(DIGITAL_Y)) tankDrive = !tankDrive;
 		if(master.get_digital_new_press(DIGITAL_A)) autoIndex = !autoIndex;
 		if (master.get_digital_new_press(DIGITAL_B)) outdoorField = !outdoorField;

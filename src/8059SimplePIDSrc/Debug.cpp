@@ -1,14 +1,23 @@
 #include "main.h"
 int DEBUG_MODE = 8;
+bool driveMode = false;
 void printPosMaster(){
   Controller master(E_CONTROLLER_MASTER);
   std::string auto_use = autoIndex? "AUTO": "MAN ";
   std::string field_cond = outdoorField? "OUT":"IN ";
+  if (driveMode){
   master.print(1, 0, "%.2f %.2f %.2f", X, Y, bearing*toDeg);
   delay(50);
   master.print(2, 0, "Batt: %.0f %s",battery::get_capacity(), auto_use.c_str());
   delay(50);
   master.print(0,0,"meong!!   %s",field_cond.c_str());
+}
+  else {
+  master.print(1, 0, "%.2f %.2f %.2f", X, Y, bearing*toDeg);
+  delay(50);
+  master.print(2, 0, "Batt: %.0f",battery::get_capacity());
+  delay(50);
+  }
 
 }
 void printPosTerminal(){

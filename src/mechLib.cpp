@@ -3,7 +3,7 @@
 #include "mechLib.hpp"
 
 float outdoorIntake = 2508, outdoorShoot = 2508;
-float indoorIntake = 2900, indoorShoot = 2900;
+float indoorIntake = 2900, indoorShoot = 2700;
 
 float intakeColorThreshold = 0, shootColorThreshold = 0;
 double powerRollers = 0, powerIndexer = 0, powerShooter = 0;
