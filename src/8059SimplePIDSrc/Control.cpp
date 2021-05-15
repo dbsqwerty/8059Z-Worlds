@@ -4,7 +4,7 @@
 #define DEFAULT_TURN_KP 0.95
 #define DEFAULT_TURN_KD 0
 #define RAMPING_POW 2
-#define DISTANCE_LEEWAY 5
+#define DISTANCE_LEEWAY 0
 #define BEARING_LEEWAY 1.5
 
 const double MAX_POW = 120;
