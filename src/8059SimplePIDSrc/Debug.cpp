@@ -2,11 +2,13 @@
 int DEBUG_MODE = 8;
 void printPosMaster(){
   Controller master(E_CONTROLLER_MASTER);
-  master.print(0,0,"  Meong!!");
-  std::string auto_use = autoIndex? "AUTO": "MANUAL";
+  std::string auto_use = autoIndex? "AUTO": "MAN";
   master.print(1, 0, "%.2f %.2f %.2f", X, Y, bearing*toDeg);
   delay(50);
-  master.print(2, 0, "Battery: %.0f       Index: %s",battery::get_capacity(), autoIndexUsed.c_str());
+  master.print(2, 0, "Batt: %.0f %s",battery::get_capacity(), auto_use.c_str());
+  delay(50);
+  master.print(0,0,"meong!! -XH");
+
 }
 void printPosTerminal(){
   printf("x: %.2f y: %.2f bearing: %.2f\n", X, Y, bearing*toDeg);
@@ -44,8 +46,6 @@ void Debug(void * ignore){
         } 
       case 8: {
           printf("errorEncdL: %.2f errorEncdR: %.2f\t", errorEncdL, errorEncdR);
-          printf("targPowerL: %.2f, targPowerR: %.2f\t", targPowerL, targPowerR);
-          printf("powerL: %.2f powerR: %.2f\n", powerL, powerR);
           printf("encdL: %.2f encdR: %.2f\n", encdL, encdR);
           printf("indexValue: %.2f ShooterValue: %.2f\n", intakeColorValue , shootColorValue);
           break;
