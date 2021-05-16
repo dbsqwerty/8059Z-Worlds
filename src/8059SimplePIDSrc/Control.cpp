@@ -1,12 +1,12 @@
 #include "main.h"
-#define DEFAULT_KP 0.001275
-#define DEFAULT_KD 0
-#define DEFAULT_TURN_KP 0.95
+#define DEFAULT_KP 0.002395
+#define DEFAULT_KD 0.002375
+#define DEFAULT_TURN_KP 0
 #define DEFAULT_TURN_KD 0
-#define RAMPING_POW 1.2
+#define RAMPING_POW 1
 #define DISTANCE_LEEWAY 15
 #define BEARING_LEEWAY 1.5
-#define MAX_POW = 115;
+const double MAX_POW = 115;
 
 double targEncdL = 0, targEncdR = 0, targBearing = 0;
 double errorEncdL = 0, errorEncdR = 0, errorBearing = 0;
@@ -87,7 +87,7 @@ void Control(void * ignore){
   Motor BR (BRPort);
   int count = 0;
   prevErrorEncdL = 0, prevErrorEncdR = 0, prevErrorBearing = 0;
-  while(competition::is_autonomous()){
+  while(!COMPETITION_MODE || competition::is_autonomous()){
     if(!pauseBase) {
       if(turnMode){
         errorBearing = targBearing - bearing;

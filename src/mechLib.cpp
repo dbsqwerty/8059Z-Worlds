@@ -2,14 +2,15 @@
 #include "main.h"
 #include "mechLib.hpp"
 
-float outdoorIntake = 2508, outdoorShoot = 2508;
-float indoorIntake = 2900, indoorShoot = 2700;
+int outdoorIntake = 2508, outdoorShoot = 2508;
+int indoorIntake = 2900, indoorShoot = 2900;
 
-float intakeColorThreshold = 0, shootColorThreshold = 0;
+int intakeColorThreshold = 0, shootColorThreshold = 0;
 double powerRollers = 0, powerIndexer = 0, powerShooter = 0;
 double rollerMax = 127, indexMax=127, shooterMax = 127;
 bool autoIndex = false, outdoorField=false;
 
+bool debug = false;
 
 void setMech(int r, int i, int s){
   powerRollers = r;
@@ -68,10 +69,11 @@ void MechControl(void * ignore){
   double indexerMove = 0, shooterMove = 0, rollersMove = 0;
 
   while(true){
-    switcheroo();
+    //switcheroo();
     if (autoIndex){
-      if (intakeColorValue < intakeColorThreshold && shootColorValue < shootColorThreshold)indexerMove=0;
+      if (intakeColorValue < intakeColorThreshold && shootColorValue < shootColorThreshold){indexerMove=0;debug=true;}
       else {
+        debug = false;
         if (competition::is_autonomous())indexerMove=1;
         else indexerMove=master.get_digital(DIGITAL_L1);
       }
@@ -90,7 +92,7 @@ void MechControl(void * ignore){
     }else{
       shooterMove=0.05;
     }
-    //outake ALLLL
+    //outake ALLLL 
     if (master.get_digital(DIGITAL_L2)){
       shooterMove=-1;
       indexerMove=-1;
