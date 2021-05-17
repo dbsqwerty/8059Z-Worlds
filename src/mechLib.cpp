@@ -13,15 +13,14 @@ bool autoIndex = false, outdoorField=false;
 
 bool debug = false;
 
-void setMech(int r, int i, int s){
+void setMech(int r, int s){
   powerRollers = r;
-  powerIndexer = i;
   powerShooter = s;
 }
 void resetMech(){
-  setMech(0, 0, 0);
+  setMech(0, 0);
 }
-void setMech(int r, int i, int s, int t){
+void setMech(int r, int s, int t){
   setMech(r, i, s);
   delay(t);
   resetMech();

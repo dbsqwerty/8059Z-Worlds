@@ -113,10 +113,11 @@ void autonomous() {
  	while (true) {
  		driveMode = true;
  		if(!COMPETITION_MODE){
- 		if(master.get_digital_new_press(DIGITAL_Y)) tankDrive = !tankDrive;
 		if(master.get_digital_new_press(DIGITAL_A)) autoIndex = !autoIndex;
 		if(master.get_digital_new_press(DIGITAL_X)) autonomous();
+		if(master.get_digital_new_press(DIGITAL_Y)) tankDrive = !tankDrive;
 		}
+
  		if(tankDrive){
        double l = master.get_analog(ANALOG_LEFT_Y);
        double r = master.get_analog(ANALOG_RIGHT_Y);

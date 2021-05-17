@@ -1,8 +1,8 @@
 #include "main.h"
 #define DEFAULT_KP 0.0019
 #define DEFAULT_KD 0.225
-#define DEFAULT_TURN_KP 0
-#define DEFAULT_TURN_KD 0
+#define DEFAULT_TURN_KP 1.05  //1.35 for 90 degrees, current value for 180
+#define DEFAULT_TURN_KD 1.65 //0.95 for 90 degrees, current value for 180
 #define RAMPING_POW 1.2
 #define DISTANCE_LEEWAY 15
 #define BEARING_LEEWAY 1.5
@@ -107,6 +107,7 @@ void Control(void * ignore){
         powerL = abscap(powerL, MAX_POW);
         powerR = abscap(powerR, MAX_POW);
         printf("powerL, R: %.1f \t%.1f\n", powerL, powerR);
+
       }else{
         errorEncdL = targEncdL - encdL;
         errorEncdR = targEncdR - encdR;
