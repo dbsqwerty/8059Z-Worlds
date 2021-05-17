@@ -13,5 +13,6 @@ void autoFrontIntake();
 void autoBackIntake();
 void autoLoad();
 void switcheroo();
+void manualIndex();
 void MechControl(void * ignore);
 #endif

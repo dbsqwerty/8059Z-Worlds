@@ -9,18 +9,19 @@ int indoorIntake = 2900, indoorShoot = 2900;
 int intakeColorThreshold = 0, shootColorThreshold = 0;
 double powerRollers = 0, powerIndexer = 0, powerShooter = 0;
 double rollerMax = 127, indexMax=127, shooterMax = 127;
-bool autoIndex = false, outdoorField=false;
+bool autoIndex = true, outdoorField=false;
 
-bool debug = false;
+bool debug = false, manualIndex_auton = false;
 
-void setMech(int r, int s){
+void setMech(int r,int i, int s){
   powerRollers = r;
+  powerIndexer = i;
   powerShooter = s;
 }
 void resetMech(){
-  setMech(0, 0);
+  setMech(0, 0, 0);
 }
-void setMech(int r, int s, int t){
+void setMech(int r, int i, int s, int t){
   setMech(r, i, s);
   delay(t);
   resetMech();
@@ -60,6 +61,11 @@ void switcheroo(){
     shootColorThreshold = indoorShoot;
   }
 }
+void manualIndex(){
+  if(manualIndex_auton)manualIndex_auton = !manualIndex_auton;
+  else manualIndex_auton = true;
+}
+
 void MechControl(void * ignore){
   Motor lRoller (lRollerPort);
   Motor rRoller (rRollerPort);
@@ -74,7 +80,7 @@ void MechControl(void * ignore){
       if (intakeColorValue < intakeColorThreshold && shootColorValue < shootColorThreshold){indexerMove=0;debug=true;}
       else {
         debug = false;
-        if (competition::is_autonomous())indexerMove=1;
+        if (competition::is_autonomous() && !manualIndex_auton)indexerMove=1;
         else indexerMove=master.get_digital(DIGITAL_L1);
       }
     }
