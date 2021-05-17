@@ -3,7 +3,7 @@
 #define _MECH_LIB_HPP_
 /** refer to mech_lib.cpp for function documentation */
 /** traditional-style mech library */
-extern bool autoIndex, outdoorField;
+extern bool autoIndex, outdoorField,debug;
 void setMech(int r, int i, int s);
 void resetMech();
 void setMech(int r, int i, int s, int t);

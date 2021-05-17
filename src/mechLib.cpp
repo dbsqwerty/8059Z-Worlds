@@ -3,6 +3,7 @@
 #include "mechLib.hpp"
 
 int outdoorIntake = 2508, outdoorShoot = 2508;
+
 int indoorIntake = 2900, indoorShoot = 2900;
 
 int intakeColorThreshold = 0, shootColorThreshold = 0;
@@ -69,7 +70,7 @@ void MechControl(void * ignore){
   double indexerMove = 0, shooterMove = 0, rollersMove = 0;
 
   while(true){
-    //switcheroo();
+    switcheroo();
     if (autoIndex){
       if (intakeColorValue < intakeColorThreshold && shootColorValue < shootColorThreshold){indexerMove=0;debug=true;}
       else {

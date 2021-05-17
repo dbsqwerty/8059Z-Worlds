@@ -1,9 +1,9 @@
 #include "main.h"
-#define DEFAULT_KP 0.002395
-#define DEFAULT_KD 0.002375
+#define DEFAULT_KP 0.0019
+#define DEFAULT_KD 0.225
 #define DEFAULT_TURN_KP 0
 #define DEFAULT_TURN_KD 0
-#define RAMPING_POW 1
+#define RAMPING_POW 1.2
 #define DISTANCE_LEEWAY 15
 #define BEARING_LEEWAY 1.5
 const double MAX_POW = 115;

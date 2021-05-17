@@ -56,11 +56,12 @@ void Debug(void * ignore){
           printf("errorEncdL: %.2f errorEncdR: %.2f\t", errorEncdL, errorEncdR);
           printf("targPowerL: %.2f, targPowerR: %.2f\t", targPowerL, targPowerR);
           printf("powerL: %.2f powerR: %.2f\n", powerL, powerR);
+          printf("Battery Readout: %.0f", battery::get_capacity());
           break;
         } 
       case 8: {
           printf("indexValue: %d ShooterValue: %d\n", intakeColorValue, shootColorValue);
-          printf("Test: %d\n", debug); // prints 1
+          printf("Test %d",debug);
           break;
       }
     }
