@@ -10,26 +10,54 @@ void blue(){
 
 }
 void red(){
+	//goal 1
+	//shoot
 	setCoords(0,0,30);
 	setMech(127,127);
-	delay(500);
+	delay(200);
+
+	//goal 2
+	//get ball
 	setMech(127,0);
-	delay(500);
-	baseMove(28);
-	waitBase(1000);
+	//delay(500);
+	baseMove(28.8);
+	waitBase(1000);	//check
 	baseTurn(90,1.35,0.95);
-	waitBase(750);
-	baseMove(25.8 );
-	waitBase (800);
+	waitBase(800);
+	baseMove(30.5);
+	waitBase (1000);
 	delay(1000);
+	//ram ball into centre
 	baseTurn(0,1.35,0.95);
-	waitBase(750);
+	waitBase(850);
 	manualIndex();
 	resetMech();
-	baseMove(-20);
-	waitBase(750);
-	baseTurn(-50,1.45,0.85);
+	baseMove(-24);
+	waitBase(1500);
+
+	//goal 3
+	baseTurn(-46,1.45,0.85);
+	waitBase(800);
+	manualIndex();
+	baseMove(68);
+	waitBase(1550);
+	manualIndex();
+	setMech(-127,-127,0);
+	delay(750);
+	manualIndex();
+
+	//goal 4
+	baseMove(-70);
+	waitBase(1000);
+	baseTurn(-150); //tune kP & kD
+	waitBase(700);
+	baseMove(90);
+	waitBase(3000);
+	baseTurn(-135);
 	waitBase(500);
+
+
+
 
 
 
