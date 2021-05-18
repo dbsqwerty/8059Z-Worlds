@@ -1,5 +1,8 @@
 /** Autonomous routines */
 #include "main.h"
+
+int autonNum = 0;	//initial declaration
+
 /** programming skills run */
 void test(){
 	setCoords(0,0,30);	//25 degree offset

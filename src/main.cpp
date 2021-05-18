@@ -6,6 +6,7 @@
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
+	initSelector()
 	/** declaration and initialization of motors, encoders and controller */
 	Motor FL (FLPort, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
 	Motor BL (BLPort, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
@@ -67,12 +68,11 @@ void autonomous() {
 	/** numerical choice of which autonomous set to run */
 	setCoords(0, 0, 0);
 	driveMode = false;
-	int autonNum = 0;
 	double start = millis();
 	switch (autonNum){
-		case 0: blue(); break;
-		case 1: red(); break;
-		case 2: test(); break;
+		case 0: test(); break;
+		case 1: blue(); break;
+		case 2: red(); break;
 	}
 	printf("Time used: %.2f seconds\n", (millis() - start)/1000);
 	Controller master(E_CONTROLLER_MASTER);
