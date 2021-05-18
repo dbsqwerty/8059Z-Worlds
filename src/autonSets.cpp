@@ -32,27 +32,29 @@ void red(){
 	waitBase(850);
 	manualIndex();
 	resetMech();
-	baseMove(-25);
-	waitBase(1150);
+	baseMove(-26);
+	waitBase(1200);
 
 	//goal 3
-	baseTurn(-50,1.45,0.85);
+	baseTurn(-46,1.45,0.85);
 	waitBase(800);
 	manualIndex();
-	baseMove(68);
+	baseMove(69);
 	waitBase(1550);
 	manualIndex();
 	setMech(-127,-127,0);
-	delay(700);
+	delay(850);
 	manualIndex();
 
 	//goal 4
 	baseMove(-76);
 	waitBase(1250);
-	baseTurn(-146); //tune kP & kD
+	baseTurn(-143.6); //tune kP & kD
 	waitBase(1500);
-	baseMove(100);
+	baseMove(101,0.003,0);
+	setMech(127,0);
 	waitBase(1900);
+	resetMech();
 	delay(100);
 	setMech(-127, 127, 127);
 	delay(1000);
