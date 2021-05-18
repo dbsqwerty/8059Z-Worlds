@@ -72,6 +72,7 @@ void autonomous() {
 	switch (autonNum){
 		case 0: blue(); break;
 		case 1: red(); break;
+		case 2: test(); break;
 	}
 	printf("Time used: %.2f seconds\n", (millis() - start)/1000);
 	Controller master(E_CONTROLLER_MASTER);

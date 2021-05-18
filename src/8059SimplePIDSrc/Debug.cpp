@@ -1,9 +1,9 @@
 #include "main.h"
-int DEBUG_MODE = 4;
+int DEBUG_MODE = 7;
 bool driveMode = false;
 
 /*-----------------------------------------USER INPUT-----------------------------------------*/
-bool COMPETITION_MODE = true;
+bool COMPETITION_MODE = false;
 /*--------------------------------------------------------------------------------------------*/
 
 void printPosMaster(){
