@@ -13,13 +13,22 @@ bool autoIndex = true, outdoorField=false;
 
 bool debug = false, manualIndex_auton = false;
 
+double indexerMove = 0, shooterMove = 0, rollersMove = 0;
+
+void setMech(int r, int s){
+  rollersMove = r/127;
+  shooterMove = s/127;
+}
+
 void setMech(int r,int i, int s){
-  powerRollers = r;
-  powerIndexer = i;
-  powerShooter = s;
+
+    rollersMove = r/127;
+    indexerMove = i/127;
+    shooterMove = s/127;
 }
 void resetMech(){
   setMech(0, 0, 0);
+
 }
 void setMech(int r, int i, int s, int t){
   setMech(r, i, s);
@@ -72,7 +81,7 @@ void MechControl(void * ignore){
   Motor indexer (indexerPort);
   Motor shooter (shooterPort);
   Controller master(E_CONTROLLER_MASTER);
-  double indexerMove = 0, shooterMove = 0, rollersMove = 0;
+
 
   while(true){
     switcheroo();
@@ -87,6 +96,7 @@ void MechControl(void * ignore){
     else{
       indexerMove=(master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
     }
+    if (!competition::is_autonomous()){
     //shooting code
     if(master.get_digital(DIGITAL_R2) && master.get_digital(DIGITAL_R1)) {
       shooterMove=0.75;
@@ -98,14 +108,14 @@ void MechControl(void * ignore){
     }else{
       shooterMove=0.05;
     }
-    //outake ALLLL 
+    //outake ALLLL
     if (master.get_digital(DIGITAL_L2)){
       shooterMove=-1;
       indexerMove=-1;
       rollersMove=-1;
     }
     //rollllersssss
-    rollersMove=(master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
+    rollersMove=(master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));}
 
     powerIndexer = (indexerMove*indexMax);
     powerRollers = (rollersMove*rollerMax);

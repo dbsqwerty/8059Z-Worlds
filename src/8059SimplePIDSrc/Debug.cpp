@@ -58,7 +58,7 @@ void Debug(void * ignore){
           printf("powerL: %.2f powerR: %.2f\n", powerL, powerR);
           printf("Battery Readout: %.0f", battery::get_capacity());
           break;
-        } 
+        }
       case 8: {
           printf("indexValue: %d ShooterValue: %d\n", intakeColorValue, shootColorValue);
           printf("Test %d",debug);

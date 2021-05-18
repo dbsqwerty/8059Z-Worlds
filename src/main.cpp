@@ -67,14 +67,11 @@ void autonomous() {
 	/** numerical choice of which autonomous set to run */
 	setCoords(0, 0, 0);
 	driveMode = false;
-	int autonNum = 4;	
-	double start = millis();	
+	int autonNum = 1;
+	double start = millis();
 	switch (autonNum){
-		case 0: BHR(); break;
-		case 1: BMR(); break;
-		case 2: RHR(); break;
-		case 3: RMR(); break;
-		case 4: test(); break;
+		case 0: blue(); break;
+		case 1: red(); break;
 	}
 	printf("Time used: %.2f seconds\n", (millis() - start)/1000);
 	Controller master(E_CONTROLLER_MASTER);

@@ -5,8 +5,9 @@
 /** traditional-style mech library */
 extern bool autoIndex, outdoorField,debug;
 void setMech(int r, int s);
+void setMech(int r,int i, int s);
 void resetMech();
-void setMech(int r, int s, int t);
+void setMech(int r, int i, int s, int t);
 void waitIntakeColor();
 void waitShootColor();
 void autoFrontIntake();
