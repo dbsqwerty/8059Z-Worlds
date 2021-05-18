@@ -1,5 +1,5 @@
 #include "main.h"
-int DEBUG_MODE = 7;
+int DEBUG_MODE = 8;
 bool driveMode = false;
 
 /*-----------------------------------------USER INPUT-----------------------------------------*/

@@ -4,7 +4,7 @@
 
 int outdoorIntake = 2508, outdoorShoot = 2508;
 
-int indoorIntake = 2900, indoorShoot = 2900;
+int indoorIntake = 2800, indoorShoot = 2900;
 
 int intakeColorThreshold = 0, shootColorThreshold = 0;
 double powerRollers = 0, powerIndexer = 0, powerShooter = 0;
