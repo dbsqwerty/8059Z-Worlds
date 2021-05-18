@@ -6,7 +6,7 @@
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	initSelector()
+	initSelector();
 	/** declaration and initialization of motors, encoders and controller */
 	Motor FL (FLPort, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
 	Motor BL (BLPort, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
