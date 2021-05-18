@@ -19,17 +19,17 @@ void red(){
 	waitBase(1000);
 	baseTurn(90,1.35,0.95);
 	waitBase(750);
-	baseMove(31);
+	baseMove(25.8 );
 	waitBase (800);
 	delay(1000);
-	baseTurn(-90);
+	baseTurn(0,1.35,0.95);
 	waitBase(750);
-	baseMove(-24);
+	manualIndex();
+	resetMech();
+	baseMove(-20);
 	waitBase(750);
-	baseTurn(-135);
-	waitBase(750);
-	baseMove(78);
-	waitBase(1250);
+	baseTurn(-50,1.45,0.85);
+	waitBase(500);
 
 
 
