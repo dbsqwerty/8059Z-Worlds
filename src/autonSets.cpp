@@ -48,13 +48,13 @@ void red(){
 
 	//goal 4
 	baseMove(-70);
-	waitBase(1000);
+	waitBase(1250);
 	baseTurn(-150); //tune kP & kD
 	waitBase(700);
-	baseMove(90);
-	waitBase(3000);
-	baseTurn(-135);
-	waitBase(500);
+	baseMove(85);
+	waitBase(1250);
+	setMech(-127, 127, 127);
+	delay(750);
 
 
 
