@@ -13,6 +13,7 @@ bool autoIndex = true, outdoorField=false;
 
 bool debug = false, manualIndex_auton = false;
 
+
 double indexerMove = 0, shooterMove = 0, rollersMove = 0;
 
 void setMech(int r, int s){
@@ -116,7 +117,13 @@ void MechControl(void * ignore){
       rollersMove=-1;
     }
     //rollllersssss
-    rollersMove=(master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));}
+    if (master.get_digital(DIGITAL_L2)){
+      while(master.get_digital(R1))delay(5);
+      rollersMove = -1;
+    }
+    else if (master.get_digital(DIGITAL_L1)) rollersMove = 1;
+    else rollersMove = 0;
+  }
 
     powerIndexer = (indexerMove*indexMax);
     powerRollers = (rollersMove*rollerMax);
