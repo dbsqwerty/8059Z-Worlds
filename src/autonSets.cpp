@@ -109,12 +109,83 @@ void red(){
 	delay(250);
 	setMech(-127, 127, 127);
 	delay(850);
-
-void redSafe();{
-
 }
+
 void blueSafe(){
+	setCoords(0, 0,0);
+  //goal 1
+  setMech(80,80,0,0);
+  delay(40);
+  baseMove(11);
+  waitBase(700);
+	manualIndex();
+  setMech(0,107,127);
+	delay(500);
+	manualIndex();
+
+  //goal 2
+  resetMech();
+  baseMove(-143.1);
+  waitBase(1431);
+  baseTurn(75);
+  waitBase(750);
+
+  baseMove(18);
+  waitBase(450);
+  setMech(0,127);
+	delay(1500);
+
+	//goal 3
+
+	resetMech();
+	baseMove(-24);
+	waitBase(1000);
+	baseTurn(137.2);
+	waitBase(750);
+	setMech(65,0);
+	baseMove(69);
+	waitBase(2340);
+	delay(400);
+	setMech(0,127);
+	delay(2500);
 
 }
 
+void redSafe(){
+	setCoords(0, 0,0);
+	//goal 1
+	setMech(80,0);
+	delay(40);
+	baseMove(11);
+	waitBase(700);
+	manualIndex();
+	setMech(0,107,127);
+	delay(500);
+	manualIndex();
+
+	//goal 2
+	resetMech();
+	baseMove(-143.1);
+	waitBase(1431);
+	baseTurn(75);
+	waitBase(750);
+
+	baseMove(18);
+	waitBase(450);
+	setMech(0,127);
+	delay(1500);
+
+	//goal 3
+
+	resetMech();
+	baseMove(-28);
+	waitBase(1000);
+	baseTurn(137.2);
+	waitBase(750);
+	setMech(52,0);
+	baseMove(69);
+	waitBase(2340);
+	delay(400);
+	setMech(0,127);
+	delay(2500);
 }

@@ -5,4 +5,6 @@ extern int autonNum;
 void test();
 void blue();
 void red();
+void blueSafe();
+void redSafe();
 #endif
