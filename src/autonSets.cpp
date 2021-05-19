@@ -110,10 +110,11 @@ void red(){
 	setMech(-127, 127, 127);
 	delay(850);
 
+void redSafe();{
 
+}
+void blueSafe(){
 
-
-
-
+}
 
 }
