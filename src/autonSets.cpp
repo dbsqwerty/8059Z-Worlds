@@ -55,7 +55,7 @@ void blue(){
 	setMech(127,0);
 	waitBase(1900);
 	resetMech();
-	delay(400);
+	delay(340);
 	setMech(-127, 127, 127);
 	delay(850);
 
@@ -100,14 +100,14 @@ void red(){
 	//goal 4
 	baseMove(-74.5);
 	waitBase(1250);
-	baseTurn(-142.1); //tune kP & kD
-	waitBase(1500);
+	baseTurn(-144.1); //tune kP & kD
+	waitBase(1300);
 	baseMove(105);
 	setMech(127,0);
 	waitBase(1900);
 	resetMech();
 	setMech(-127,0);
-	delay(250);
+	delay(450);
 	resetMech();
 	setMech(-127, 127, 127);
 	delay(850);

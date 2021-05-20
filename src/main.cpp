@@ -7,7 +7,7 @@
  */
 
 void initialize() {
-	initSelector(); //display selector, q hard to do ngl
+	//initSelector(); //display selector, q hard to do ngl
 	/** declaration and initialization of motors, encoders and controller */
 	Motor FL (FLPort, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
 	Motor BL (BLPort, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
@@ -31,7 +31,7 @@ void initialize() {
   		delay(50);
 
   		if (master.get_digital_new_press(DIGITAL_B)){
-    
+
     	autonNum+=1;
     	autonNum = autonNum % 4;
   		}
@@ -87,6 +87,7 @@ void autonomous() {
 	/** numerical choice of which autonomous set to run */
 	setCoords(0, 0, 0);
 	driveMode = false;
+	autonNum = 1;
 	double start = millis();
 	switch (autonNum){
 		case 0: test(); break;
@@ -94,6 +95,7 @@ void autonomous() {
 		case 2: red(); break;
 		case 3: redSafe(); break;
 		case 4: blueSafe(); break;
+		default: blue(); break;
 	}
 	printf("Time used: %.2f seconds\n", (millis() - start)/1000);
 	Controller master(E_CONTROLLER_MASTER);
