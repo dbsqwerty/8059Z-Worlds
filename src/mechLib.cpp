@@ -117,13 +117,9 @@ void MechControl(void * ignore){
       rollersMove=-1;
     }
     //rollllersssss
-    if (master.get_digital(DIGITAL_L2)){
-      while(master.get_digital(R1))delay(5);
-      rollersMove = -1;
-    }
-    else if (master.get_digital(DIGITAL_L1)) rollersMove = 1;
-    else rollersMove = 0;
-  }
+    //removed old functionality/piro mode
+    rollersMove=(master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));}
+
 
     powerIndexer = (indexerMove*indexMax);
     powerRollers = (rollersMove*rollerMax);

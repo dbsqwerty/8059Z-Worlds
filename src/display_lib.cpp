@@ -16,7 +16,8 @@ static lv_res_t setAuton(lv_obj_t * btn){
 
 using namespace std;
 
-static const char * btnm_map[] = {"1","2",""};
+static const char * btnm_map[] = {"1",""};
+//static const char * btnm_map[] = {"1","2",""};
 static const string display_map[] = {"Blue Middle","Red Middle", "Red SAFE", "Blue SAFE"};
 
 void updateFile(){
@@ -40,7 +41,7 @@ void updateFile(){
 static lv_res_t btnm_action_red(lv_obj_t * btnm, const char *txt)
 {
   if(txt == btnm_map[0]) autonNum = 2;
-  if(txt == btnm_map[1]) autonNum = 3;
+  //if(txt == btnm_map[1]) autonNum = 3;
 
   string output = "Auton Selected: " + display_map[autonNum-1];
   lv_label_set_text(title, output.c_str());
@@ -53,7 +54,7 @@ static lv_res_t btnm_action_red(lv_obj_t * btnm, const char *txt)
 static lv_res_t btnm_action_blue(lv_obj_t * btnm, const char *txt)
 {
   if(txt == btnm_map[0]) autonNum = 1;
-  if(txt == btnm_map[1]) autonNum = 4;
+  //if(txt == btnm_map[1]) autonNum = 4;
 
 
   string output = "Auton Selected: " + display_map[autonNum-1];
