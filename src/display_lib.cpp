@@ -43,9 +43,9 @@ static lv_res_t btnm_action_red(lv_obj_t * btnm, const char *txt)
   if(txt == btnm_map[0]) autonNum = 2;
   //if(txt == btnm_map[1]) autonNum = 3;
 
-  string output = "Auton Selected: " + display_map[autonNum-1];
+  string output = "#ff0000 Auton Selected: " + display_map[autonNum-1] +"#";
+  lv_label_set_recolor(title, true);                      /*Enable re-coloring by commands in the text*/
   lv_label_set_text(title, output.c_str());
-  delay(100);
   updateFile();
 
   return LV_RES_OK; /*Return OK because the button matrix is not deleted*/
@@ -57,7 +57,8 @@ static lv_res_t btnm_action_blue(lv_obj_t * btnm, const char *txt)
   //if(txt == btnm_map[1]) autonNum = 4;
 
 
-  string output = "Auton Selected: " + display_map[autonNum-1];
+  string output = "#0000ff Auton Selected: " + display_map[autonNum-1] + "#";
+  lv_label_set_recolor(title, true);                      /*Enable re-coloring by commands in the text*/
   lv_label_set_text(title, output.c_str());
   updateFile();
 

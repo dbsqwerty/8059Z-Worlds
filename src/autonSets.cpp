@@ -55,7 +55,7 @@ void blue(){
 	setMech(127,0);
 	waitBase(1900);
 	resetMech();
-	delay(250);
+	delay(350);
 	setMech(-127, 127, 127);
 	delay(850);
 
@@ -87,7 +87,7 @@ void red(){
 	waitBase(1200);
 
 	//goal 3
-	baseTurn(-49.2,1.45,0.85);
+	baseTurn(-47.8,1.45,0.85);
 	waitBase(800);
 	manualIndex();
 	baseMove(69);
@@ -106,7 +106,9 @@ void red(){
 	setMech(127,0);
 	waitBase(1900);
 	resetMech();
+	setMech(-127,0);
 	delay(250);
+	resetMech();
 	setMech(-127, 127, 127);
 	delay(850);
 }

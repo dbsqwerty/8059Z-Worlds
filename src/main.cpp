@@ -5,8 +5,9 @@
  * All other competition modes are blocked by initialize; it is recommended
  * to keep execution time for this mode under a few seconds.
  */
+
 void initialize() {
-	initSelector();
+	initSelector(); //display selector, q hard to do ngl
 	/** declaration and initialization of motors, encoders and controller */
 	Motor FL (FLPort, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
 	Motor BL (BLPort, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
@@ -21,6 +22,25 @@ void initialize() {
 	ADIDigitalIn shootColor(shootColorPort);
 	Rotation lRot(lRotPort);
 	Rotation rRot(rRotPort);
+	/**
+	master.clear();
+	bool autonlock = false;
+	while(!autonlock){
+		static const std::string display_name[] = {"Blue-Midl","Red-Midl", "Red-SAFE", "Blue-SAFE"};
+  		master.print(0,0,"Auton: %s", display_name[autonNum].c_str());
+  		delay(50);
+
+  		if (master.get_digital_new_press(DIGITAL_B)){
+    
+    	autonNum+=1;
+    	autonNum = autonNum % 4;
+  		}
+  		else if (master.get_digital_new_press(DIGITAL_X))autonlock=true;
+  		printf("autonNum: %d", autonNum);
+  		delay(5);
+  		}
+
+	*/
 	lRot.reset_position();
 	rRot.reset_position();
 	rRot.set_reversed(true);
@@ -34,7 +54,6 @@ void initialize() {
 	Task OdometryTask(Odometry);
 	Task SensorsTask(Sensors);
 	Task MechControlTask(MechControl);
-
 }
 /**
  * Runs while the robot is in the disabled state of Field Management System or
@@ -111,12 +130,14 @@ void autonomous() {
 	autoIndex = true;
 
  	while (true) {
- 		driveMode = true;
+ 		driveMode=true;
  		if(!COMPETITION_MODE){
 		if(master.get_digital_new_press(DIGITAL_A)) autoIndex = !autoIndex;
-		if(master.get_digital_new_press(DIGITAL_X)) autonomous();
 		if(master.get_digital_new_press(DIGITAL_Y)) tankDrive = !tankDrive;
+		if(master.get_digital_new_press(DIGITAL_X)) autonomous();
+
 		}
+
 
  		if(tankDrive){
        double l = master.get_analog(ANALOG_LEFT_Y);
