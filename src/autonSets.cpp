@@ -49,13 +49,13 @@ void blue(){
 	//goal 4
 	baseMove(-74.5);
 	waitBase(1250);
-	baseTurn(-145.1); //tune kP & kD
+	baseTurn(-147.1); //tune kP & kD
 	waitBase(1500);
-	baseMove(105);
+	baseMove(105,0.0016,0);
 	setMech(127,0);
 	waitBase(1900);
 	resetMech();
-	delay(350);
+	delay(400);
 	setMech(-127, 127, 127);
 	delay(850);
 
