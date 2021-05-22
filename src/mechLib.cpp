@@ -100,7 +100,7 @@ void MechControl(void * ignore){
     if (!competition::is_autonomous()){
     //shooting code
     if(master.get_digital(DIGITAL_R2) && master.get_digital(DIGITAL_R1)) {
-      shooterMove=0.75;
+      shooterMove=0.6;
       indexerMove = 1;
     }else if(master.get_digital(DIGITAL_R2)){
       shooterMove=-1;
