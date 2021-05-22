@@ -87,8 +87,9 @@ void autonomous() {
 	/** numerical choice of which autonomous set to run */
 	setCoords(0, 0, 0);
 	driveMode = false;
-	autonNum = 2;
 	double start = millis();
+	/**
+	autonNum = 2;
 	switch (autonNum){
 		case 0: test(); break;
 		case 1: blue(); break;
@@ -97,6 +98,8 @@ void autonomous() {
 		case 4: blueSafe(); break;
 		default: red(); break;
 	}
+	*/
+	red();
 	printf("Time used: %.2f seconds\n", (millis() - start)/1000);
 	Controller master(E_CONTROLLER_MASTER);
 	double final = (millis() - start)/1000;
