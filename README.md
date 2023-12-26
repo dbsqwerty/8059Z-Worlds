@@ -1,3 +1,2 @@
 # 8059Z-Worlds
-8059Z worlds
-Code than was used to go to Vex Worlds and somehow made it out alive :D
+This repository holds code used for Team 8059Z in the Vex Robotics World Championship 2021.
